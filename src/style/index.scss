@@ -1,0 +1,15 @@
+// 重置默认样式
+@import '~@css/reset.scss';
+// 自定义
+@import '~@css/mixin.scss';
+
+@import '~@css/main.scss';
+
+
+input,button{
+  border-style: none;
+  outline: none;
+}
+i{
+  font-style: normal;
+}

@@ -1,0 +1,14 @@
+{
+  "pages": [
+    "pages/index/main",
+    "pages/search/main",
+    "pages/goods-detail/main",
+    "pages/cart/main"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "蓝爷生鲜",
+    "navigationBarTextStyle": "black"
+  }
+}
