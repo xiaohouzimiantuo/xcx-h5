@@ -31,5 +31,13 @@ export default [
     {
         path: '/search',
         component: () => import('@pages/search')
-    }
+    },
+    {
+        path: '/goods-detail',
+        component: () => import('@pages/goods-detail')
+    },
+    {
+        path: '/cart',
+        component: () => import('@pages/cart')
+    },
 ]
