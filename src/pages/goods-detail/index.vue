@@ -17,7 +17,7 @@
           </p>
         </div>
       </div>
-      <div class="det_item">
+      <div class="det_item" @click="select = true">
         <div class="info">已选：12-18到港；18.0千克/箱；4级(10-29条/箱)</div>
         <div class="arrow">
           <img class="img" src="../../assets/imgs/right_arrow.png" alt>
@@ -78,22 +78,81 @@
         </div>
         <div class="cart">
           <img src="../../assets/imgs/cart@2x.png" alt class="img">
+          <span class="count">9</span>
         </div>
       </div>
       <div class="btns">
-        <button class="add">加入购物车</button>
-        <button class="buy">立即购买</button>
+        <div class="add btn">加入购物车</div>
+        <div class="buy btn">立即购买</div>
+      </div>
+    </section>
+
+    <section class="spec_content" :class="{show: select}">
+      <div class="product">
+        <div class="img_box"><img class="img" src="../../assets/imgs/more@2x.png" alt=""></div>
+        <div class="product_info">
+          <p>
+            <span class="price">￥378</span>
+            <span>/500g</span>
+            <span>￥5943.34/箱</span>
+          </p>
+          <p class="other">请选择规格属性</p>
+        </div>
+        <div class="close" @click="select = false">
+          <img class="img" src="../../assets/imgs/close@2x.png" alt="">
+        </div>
+      </div>
+
+      <div class="spec_item">
+        <h5 class="title">到港日期</h5>
+        <ul class="infos">
+          <li class="item"><p class="inner active">12-18到港</p></li>
+          <li class="item"><p class="inner">12-18到港</p></li>
+          <li class="item"><p class="inner">12-18到港</p></li>
+        </ul>
+      </div>
+      <div class="spec_item">
+        <h5 class="title">包装规格</h5>
+        <ul class="infos">
+          <li class="item"><p class="inner active">12-18到港</p></li>
+          <li class="item"><p class="inner">12-18到港</p></li>
+          <li class="item"><p class="inner">12-18到港</p></li>
+        </ul>
+      </div>
+      <div class="spec_item">
+        <h5 class="title">级别</h5>
+        <ul class="infos">
+          <li class="item"><p class="inner active">12-18到港</p></li>
+          <li class="item"><p class="inner">12-18到港</p></li>
+          <li class="item"><p class="inner">12-18到港</p></li>
+        </ul>
+      </div>
+      <div class="spec_item">
+        <h5 class="title">数量</h5>
+        <div class="count">
+          <count></count>
+        </div>
       </div>
     </section>
   </div>
 </template>
 
 <script>
+import Count from '@com/count';
 export default {
   data() {
-    return {};
+    return {
+      select: false
+    };
   },
-  created() {}
+  methods: {
+    showSpec() {
+      this.select  = true;
+    }
+  },
+  components: {
+    Count
+  }
 };
 </script>
 
@@ -194,7 +253,7 @@ export default {
   position: fixed;
   bottom: 0;
   left: 0;
-  padding: 0 rem(15);
+  // padding: 0 rem(15);
   box-sizing: border-box;
   background: $white;
   .icon_box{
@@ -202,6 +261,7 @@ export default {
     height: 100%;
     .headset,
     .cart {
+      position: relative;
       flex-shrink: 0;
       width: rem(60);
       height: 100%;
@@ -210,18 +270,32 @@ export default {
         width: rem(20);
         height: rem(20);
       }
+      .count{
+        display: block;
+        width: rem(16);
+        height: rem(16);
+        @include flex(center);
+        position: absolute;
+        right: rem(14);
+        top: rem(10);
+        border-radius: 50%;
+        background: #0088ff;
+        color: $white;
+        font-size: rem(10);
+      }
     }
   }
   .btns {
     margin-left: rem(20);
+    margin-right: rem(16);
     @include flex(center);
-    button {
+    .btn {
       @include flex(center);
       // width: rem(98);
       // height: rem(30);
-      padding: rem(4) rem(14);
+      padding: rem(5) rem(14);
       border-radius: rem(20);
-      font-size: rem(14);
+      font-size: rem(12);
     }
     .add {
       border: rem(1) solid #0088ff;
@@ -234,5 +308,83 @@ export default {
       color: $white;
     }
   }
+}
+
+.spec_content{
+  box-sizing: border-box;
+  padding: rem(18) rem(15);
+  position: fixed;
+  width: 100%;
+  bottom: -100%;
+  left: 0;
+  transition: all .5s ease;
+  background: $white;
+  border-top-left-radius: rem(20);
+  border-top-right-radius: rem(20);
+  .product{
+    height: rem(88);
+    @include flex(flex-start);
+    .img_box{
+      flex-shrink: 0;
+      width: rem(88);
+      height: rem(88);
+    }
+    .product_info{
+      align-self: flex-end;
+      width: 100%;
+      font-size: rem(14);
+      color: #3F3F3F;
+      .price{
+        font-size: rem(18);
+        color: #FF3B30;
+        margin-right: rem(5);
+      }
+      .other{
+        margin-top: rem(18);
+        margin-left: rem(14);
+        color: #333;
+      }
+    }
+    .close{
+      flex-shrink: 0;
+        align-self: flex-start;
+        width: rem(18);
+        height: rem(18);
+      }
+  }
+
+
+  .spec_item{
+    margin-top: rem(20);
+    .title{
+      font-size: rem(14);
+      color: #333333;
+    }
+    .infos{
+      @include flex(flex-start);
+      flex-wrap: wrap;
+      font-size: rem(14);
+      .item{
+        flex-shrink: 0;
+        padding: rem(8) 0;
+        margin-right: rem(20);
+        .inner{
+          padding: rem(8);
+          border: rem(1) solid #7F7F7F;
+          border-radius: rem(2);
+        }
+        .active{
+          border: rem(1) solid #0088FF;
+          color: #0088FF;
+        }
+      }
+    }
+    .count{
+      margin-top: rem(8);
+    }
+  }
+}
+.show {
+  bottom: rem(50);
 }
 </style>

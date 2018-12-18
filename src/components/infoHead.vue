@@ -57,6 +57,9 @@ export default {
         display: block;
         text-align: center;
         padding: rem(2);
+        box-sizing: border-box;
+        min-width: rem(18);
+        text-align: center;
         background: #333;
         border-radius: rem(2);
       }
