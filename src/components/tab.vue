@@ -1,16 +1,16 @@
 <template>
   <div class="tab">
-    <div class="item" :class="{cur: active == 0}">
+    <div @click="toHome" class="item" :class="{cur: active == 0}">
         <img v-if="active == 0" class="img" :src="imgs.home" alt="">
         <img v-else class="img" :src="imgs.home_dark" alt="">
         <span >首页</span>
     </div>
-    <div class="item" :class="{cur: active == 1}">
+    <div @click="toCart" class="item" :class="{cur: active == 1}">
         <img v-if="active == 1" class="img" :src="imgs.cart" alt="">
         <img v-else class="img" :src="imgs.cart_dark" alt="">
         <span >购物车</span>
     </div>
-    <div class="item" :class="{cur: active == 2}">
+    <div @click="toMine" class="item" :class="{cur: active == 2}">
         <img v-if="active == 2" class="img" :src="imgs.mine" alt="">
         <img v-else class="img" :src="imgs.mine_dark" alt="">
         <span >我的</span>
@@ -26,9 +26,9 @@ import home_dark from '@imgs/nor/home_dark@2x.png';
 import cart_dark from '@imgs/nor/cart_dark@2x.png';
 import mine_dark from '@imgs/nor/mine_dark@2x.png';
 export default {
+    props: ['active'],
   data () {
     return {
-        active: 0,
         imgs: {
             home,
             cart,
@@ -36,9 +36,25 @@ export default {
             home_dark,
             cart_dark,
             mine_dark
-        },
-        
+        },  
     }
+  },
+  methods: {
+      toHome() {
+          wx.redirectTo({
+            url: '/pages/index/main'
+          });
+      },
+      toCart() {
+          wx.redirectTo({
+            url: '/pages/cart/main'
+          });
+      },
+      toMine() {
+          wx.redirectTo({
+            url: '/pages/mine/main'
+          });
+      },
   }
 }
 </script>

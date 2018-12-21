@@ -42,10 +42,6 @@ export default {
 
 <style lang="scss" scoped>
 @import "~@css/mixin.scss";
-.img {
-  width: 100%;
-  height: 100%;
-}
 .search {
   color: #333333;
   .head_wrap {

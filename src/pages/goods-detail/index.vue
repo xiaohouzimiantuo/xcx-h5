@@ -158,10 +158,6 @@ export default {
 
 <style lang="scss" scoped>
 @import "~@css/mixin.scss";
-.img {
-  width: 100%;
-  height: 100%;
-}
 .det_img {
   width: 100%;
   height: rem(375);
@@ -267,8 +263,8 @@ export default {
       height: 100%;
       @include flex(center);
       .img {
-        width: rem(20);
-        height: rem(20);
+        width: rem(30);
+        height: rem(30);
       }
       .count{
         display: block;
@@ -276,8 +272,8 @@ export default {
         height: rem(16);
         @include flex(center);
         position: absolute;
-        right: rem(14);
-        top: rem(10);
+        right: rem(10);
+        top: rem(5);
         border-radius: 50%;
         background: #0088ff;
         color: $white;

@@ -3,12 +3,18 @@
     "pages/index/main",
     "pages/search/main",
     "pages/goods-detail/main",
-    "pages/cart/main"
+    "pages/cart/main",
+    "pages/mine/main",
+    "pages/cashier/main",
+    "pages/login/main",
+    "pages/order/main",
+    "pages/recharge/main",
+    "pages/register/main"
   ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "蓝爷生鲜",
+    "navigationBarTitleText": "蓝星人水产",
     "navigationBarTextStyle": "black"
   }
 }

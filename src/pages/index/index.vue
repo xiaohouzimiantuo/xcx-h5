@@ -112,7 +112,7 @@
     </section>
     
     <!-- 底部导航 -->
-    <tab></tab>
+    <tab :active="0"></tab>
   </div>
 </template>
 
@@ -154,10 +154,6 @@ export default {
 
 <style lang="scss" scoped>
 @import '~@css/mixin.scss';
-.img{
-  width: 100%;
-  height: 100%;
-}
 .home{
   padding-bottom: rem(70);
   color: #333333;
