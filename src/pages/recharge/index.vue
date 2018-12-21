@@ -12,6 +12,4 @@ export default {
 
 <style lang="scss" scoped>
 @import "~@css/mixin.scss";
-
-
 </style>

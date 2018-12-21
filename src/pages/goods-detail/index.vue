@@ -20,7 +20,7 @@
       <div class="det_item" @click="select = true">
         <div class="info">已选：12-18到港；18.0千克/箱；4级(10-29条/箱)</div>
         <div class="arrow">
-          <img class="img" src="../../assets/imgs/right_arrow.png" alt>
+          <img class="img" src="../../assets/imgs/right_arrow@2x.png" alt>
         </div>
       </div>
       <div class="description">
@@ -48,7 +48,7 @@
       <div class="det_item">
         <div class="info">图文详情</div>
         <div class="arrow">
-          <img class="img" src="../../assets/imgs/right_arrow.png" alt>
+          <img class="img" src="../../assets/imgs/right_arrow@2x.png" alt>
         </div>
       </div>
       <div class="det_item">
@@ -57,7 +57,7 @@
           <p class="sketch">厦门 运费单价：¥0/箱 起送费：¥0</p>
         </div>
         <div class="arrow">
-          <img class="img" src="../../assets/imgs/right_arrow.png" alt>
+          <img class="img" src="../../assets/imgs/right_arrow@2x.png" alt>
         </div>
       </div>
       <div class="det_item no_border">
@@ -66,7 +66,7 @@
           <p class="sketch">69条</p>
         </div>
         <div class="arrow">
-          <img class="img" src="../../assets/imgs/right_arrow.png" alt>
+          <img class="img" src="../../assets/imgs/right_arrow@2x.png" alt>
         </div>
       </div>
     </section>
@@ -217,8 +217,9 @@ export default {
   }
   .arrow {
     flex-shrink: 0;
-    width: rem(10);
-    height: rem(16);
+    width: rem(7);
+    height: rem(12);
+    @include flex(center);
   }
 }
 .description {

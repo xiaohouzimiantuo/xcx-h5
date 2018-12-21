@@ -29,6 +29,7 @@ export default {
     props: ['active'],
   data () {
     return {
+        currentPage: '',
         imgs: {
             home,
             cart,
@@ -41,20 +42,29 @@ export default {
   },
   methods: {
       toHome() {
+          if(this.currentPage == 'index') return;
           wx.redirectTo({
             url: '/pages/index/main'
           });
       },
       toCart() {
+          if(this.currentPage == 'cart') return;
           wx.redirectTo({
             url: '/pages/cart/main'
           });
       },
       toMine() {
+          if(this.currentPage == 'mine') return;
           wx.redirectTo({
             url: '/pages/mine/main'
           });
       },
+  },
+  onLoad() {
+    const pages = getCurrentPages();
+    const currentPage = pages[pages.length-1];
+    const url = currentPage.route.substr(6).replace(/\/main/, '');
+    this.currentPage = url;
   }
 }
 </script>
