@@ -8,7 +8,11 @@
 
 <script>
 export default {
-  created() {},
+  created() {
+    wx.redirectTo({
+      url: '/pages/login/main'
+    });
+  },
   // watch: {
   //   $route({query}) {
   //     window.query = query;

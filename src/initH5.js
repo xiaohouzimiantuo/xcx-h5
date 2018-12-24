@@ -4,6 +4,7 @@ import router from './router';
 
 // 使用小程序的方式
 window.wx = new Object;
+// 路由跳转
 wx.navigateTo = ({url}) => {
     url = url.slice(6);
     const prefix = url.split('?')[0].slice(0, -5);
@@ -19,8 +20,16 @@ wx.redirectTo = ({url}) => {
 wx.navigateBack = ({delta}) => {
     router.back(delta);
 }
-
-
+// 同步存储数据
+wx.getStorageSync = ({key}) => {
+    window.localStorage.getItem(key);
+}
+wx.removeStorageSync = ({key}) => {
+    window.localStorage.removeItem(key);
+}
+wx.setStorageSync = ({key, data}) => {
+    window.localStorage.setItem(key, data);
+}
 // 注册全局组件
 import { Swipe, SwipeItem } from 'vant';
 

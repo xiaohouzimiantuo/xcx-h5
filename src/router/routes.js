@@ -64,4 +64,8 @@ export default [
         path: '/register',
         component: () => import('@pages/register')
     },
+    {
+        path: '/firm-order',
+        component: () => import('@pages/firm-order')
+    },
 ]

@@ -18,24 +18,26 @@
     </header>
     
     <section class="assets">
-        <div class="amount">
-            <section class="amount_wrap">
-                <p class="money">98.59</p>
-                <p>我的余额</p>
-            </section>
-            <section class="amount_wrap">
-                <p class="money">98.59</p>
-                <p>我的积分</p>
-            </section>
-        </div>
-        <div class="btns">
-            <div class="btn add">充值</div>
-            <div class="btn out">提现</div>
+        <div class="assets_wrap">
+            <div class="amount">
+                <section class="amount_wrap">
+                    <p class="money">98.59</p>
+                    <p>我的余额</p>
+                </section>
+                <section class="amount_wrap">
+                    <p class="money">98.59</p>
+                    <p>我的积分</p>
+                </section>
+            </div>
+            <div class="btns">
+                <div @click="toRecharge" class="btn add">充值</div>
+                <div class="btn out">提现</div>
+            </div>
         </div>
     </section>
    
     <ul class="status_entry">
-        <li class="entry_item">
+        <li @click="toOrder" class="entry_item">
             <img src="../../assets/imgs/wait_pay.png" alt="" class="waitpay">
             <span class="text">待付款</span>
         </li>
@@ -111,26 +113,38 @@
 </template>
 
 <script>
-import Tab from '@com/tab';
+import Tab from "@com/tab";
 export default {
-    components: {
-        Tab
-    }
+  methods: {
+    toRecharge() {
+      wx.navigateTo({
+        url: '/pages/recharge/main'
+      });
+    },
+    toOrder() {
+      wx.navigateTo({
+        url: '/pages/order/main'
+      });
+    },
+  },
+  components: {
+    Tab
+  }
 };
 </script>
 
 <style lang="scss" scoped>
 @import "~@css/mixin.scss";
-.mine{
+.mine {
   padding-bottom: rem(70);
   font-size: rem(14);
   color: #333333;
 }
-.header{
+.header {
   padding: rem(4) rem(16);
   height: rem(83);
   display: flex;
-  .img_box{
+  .img_box {
     font-size: 0;
     width: rem(65);
     height: rem(65);
@@ -138,173 +152,177 @@ export default {
     overflow: hidden;
     flex-shrink: 0;
   }
-  .userinfo{
-      width: 100%;
-      .phone{
-          font-size: rem(20);
-          color: #333333;
-      }
-      .level{
-        height: rem(20);
-        width: rem(86);
-        margin-top: rem(10);
-        @include flex(flex-start);
-        font-size: 0;
-        color: #FFFFFF;
-        background: #3B3E4D;
-        background-image: linear-gradient(90deg, #828899 0%, #3B3E4D 100%);
-        border-radius: rem(12.5);
-        .star{
-            width: rem(20);
-            height: rem(20);
-            margin-right: rem(3);
-        }
-        .text{
-            font-size: rem(12);
-        }
-        .right{
-            margin-left: rem(10);
-            width: rem(7);
-            height: rem(12);
-        }
-      }
-  }
-  .set_btn{
-      flex-shrink: 0;
-      width: rem(36);
-      height: rem(36);
-      padding: rem(9);
-      box-sizing: border-box;
-      margin-top: rem(-3);
+  .userinfo {
+    width: 100%;
+    .phone {
+      font-size: rem(20);
+      color: #333333;
+    }
+    .level {
+      height: rem(20);
+      width: rem(86);
+      margin-top: rem(10);
+      @include flex(flex-start);
       font-size: 0;
+      color: #ffffff;
+      background: #3b3e4d;
+      background-image: linear-gradient(90deg, #828899 0%, #3b3e4d 100%);
+      border-radius: rem(12.5);
+      .star {
+        width: rem(20);
+        height: rem(20);
+        margin-right: rem(3);
+      }
+      .text {
+        font-size: rem(12);
+      }
+      .right {
+        margin-left: rem(10);
+        width: rem(7);
+        height: rem(12);
+      }
+    }
+  }
+  .set_btn {
+    flex-shrink: 0;
+    width: rem(36);
+    height: rem(36);
+    padding: rem(9);
+    box-sizing: border-box;
+    margin-top: rem(-3);
+    font-size: 0;
   }
 }
-.assets{
-    width: rem(343);
+.assets {
+  padding: 0 rem(16);
+  .assets_wrap {
+    width: 100%;
     margin: rem(8) auto 0;
-    background: #FFFFFF;
-    box-shadow: 0 rem(2) rem(9) 0 rgba(0,0,0,0.10);
+    background: #ffffff;
+    box-shadow: 0 rem(2) rem(9) 0 rgba(0, 0, 0, 0.1);
     border-radius: rem(2);
-    .amount{
-        flex-shrink: 0;
-        position: relative;
-        @include flex(center);
-        height: rem(78);
-        .amount_wrap{
-            @include fc(center);
-            width: 50%;
-            color: #999999;
-            .money{
-                font-size: rem(18);
-                color: #333333;
-                margin-bottom: rem(5);
-            }
-        }
-        &::after{
-            content: "";
-            display: block;
-            width: 100%;
-            height: rem(1);
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            opacity: 0.1;
-            background: #000000;
-        }
-    }
-    .btns{
-        height: rem(48);
-        @include flex(center);
-        .btn{
-            width: rem(136);
-            height: rem(32);
-            @include flex(center);
-            border-radius: rem(16);
-        }
-        .add{
-            margin-right: rem(12);
-            background-image: linear-gradient(90deg, #20B3FF 0%, #0088FF 100%);
-            color: $white;
-        }
-        .out{
-            margin-left: rem(12);
-            border: rem(1) solid #0088FF;
-            color: #0088FF;
-        }
-    }
-}
-
-.status_entry{
-    padding: 0 rem(16);
-    margin-top: rem(20);
-    margin-bottom: rem(14);
-    @include flex(space-between);
-    .entry_item{
+    .amount {
+      flex-shrink: 0;
+      position: relative;
+      @include flex(center);
+      height: rem(78);
+      .amount_wrap {
         @include fc(center);
-        .text{
-            margin-top: rem(5);
+        width: 50%;
+        color: #999999;
+        .money {
+          font-size: rem(18);
+          color: #333333;
+          margin-bottom: rem(5);
         }
-        .waitpay{
-            width: rem(30);
-            height: rem(22);
-        }
-        .waitexpress{
-            width: rem(30);
-            height: rem(26);
-        }
-        .alreadyexpress{
-            width: rem(31);
-            height: rem(29);
-        }
-        .alreadyend{
-            width: rem(25);
-            height: rem(30);
-        }
+      }
+      &::after {
+        content: "";
+        display: block;
+        width: 100%;
+        height: rem(1);
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        opacity: 0.1;
+        background: #000000;
+      }
     }
+    .btns {
+      padding: 0 rem(25);
+      height: rem(48);
+      @include flex(center);
+      .btn {
+        width: 50%;
+        // width: rem(136);
+        height: rem(32);
+        @include flex(center);
+        border-radius: rem(16);
+      }
+      .add {
+        margin-right: rem(12);
+        background-image: linear-gradient(90deg, #20b3ff 0%, #0088ff 100%);
+        color: $white;
+      }
+      .out {
+        margin-left: rem(12);
+        border: rem(1) solid #0088ff;
+        color: #0088ff;
+      }
+    }
+  }
 }
 
-.info_list{
-    padding: 0 rem(16);
-    .info_item{
-        position: relative;
-        height: rem(50);
-        @include flex(space-between);
-        &:first-child{
-            &::before {
-                content: '';
-                display: block;
-                position: absolute;
-                width: 100%;
-                height:rem(1);
-                top: 0;
-                left: 0;
-                opacity: 0.1;
-                background: #000000;
-            }
-        }
-        &::after{
-            content: '';
-            display: block;
-            position: absolute;
-            width: 100%;
-            height:rem(1);
-            bottom: 0;
-            left: 0;
-            opacity: 0.1;
-            background: #000000;
-        }
-        .left_content{
-            width: 100%;
-            @include flex(space-between);
-        }
-        .right_arrow{
-            margin-left: rem(14);
-            flex-shrink: 0;
-            width: rem(7);
-            height: rem(12);
-            font-size: 0;
-        }
+.status_entry {
+  padding: 0 rem(16);
+  margin-top: rem(20);
+  margin-bottom: rem(14);
+  @include flex(space-between);
+  .entry_item {
+    @include fc(center);
+    .text {
+      margin-top: rem(5);
     }
+    .waitpay {
+      width: rem(30);
+      height: rem(22);
+    }
+    .waitexpress {
+      width: rem(30);
+      height: rem(26);
+    }
+    .alreadyexpress {
+      width: rem(31);
+      height: rem(29);
+    }
+    .alreadyend {
+      width: rem(25);
+      height: rem(30);
+    }
+  }
 }
 
+.info_list {
+  padding: 0 rem(16);
+  .info_item {
+    position: relative;
+    height: rem(50);
+    @include flex(space-between);
+    &:first-child {
+      &::before {
+        content: "";
+        display: block;
+        position: absolute;
+        width: 100%;
+        height: rem(1);
+        top: 0;
+        left: 0;
+        opacity: 0.1;
+        background: #000000;
+      }
+    }
+    &::after {
+      content: "";
+      display: block;
+      position: absolute;
+      width: 100%;
+      height: rem(1);
+      bottom: 0;
+      left: 0;
+      opacity: 0.1;
+      background: #000000;
+    }
+    .left_content {
+      width: 100%;
+      @include flex(space-between);
+    }
+    .right_arrow {
+      margin-left: rem(14);
+      flex-shrink: 0;
+      width: rem(7);
+      height: rem(12);
+      font-size: 0;
+    }
+  }
+}
 </style>

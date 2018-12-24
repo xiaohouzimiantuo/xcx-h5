@@ -7,10 +7,11 @@
       <div class="goods_info">
         <h3 class="title">商品标题商品标题商品标题商品标题商品商品标题商品标题商品标题</h3>
         <div class="info">
-          <p class="now_pice">
+          <div class="now_pice">
             <span class="money">￥387</span>
             <span>/500g</span>
-          </p>
+            <span class="other_price">¥5943.34/箱</span>
+          </div>
           <p class="sales">
             <span>销量：</span>
             <span class="count">823箱</span>
@@ -184,6 +185,9 @@ export default {
         margin-right: rem(5);
         font-size: rem(18);
         color: #ff3b30;
+      }
+      .other_price{
+        margin-left: rem(14)
       }
     }
     .sales {

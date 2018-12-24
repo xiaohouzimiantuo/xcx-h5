@@ -204,9 +204,6 @@ export default {
   }
 }
 
-.slider_wrap{
-  margin-top: rem(1);
-}
 
 
 

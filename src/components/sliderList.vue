@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="slider_content">
     <ul class="slider_list">
         <li class="slider_item" @click="toDetail" v-for="(item, index) in items" :key="index">
         <section class="img_wrap">
@@ -43,20 +43,30 @@ export default {
 
 <style lang="scss" scoped>
 @import '~@css/mixin.scss';
-.img{
-  width: 100%;
-  height: 100%;
-}
 swiper{
     height: rem(200);
 }
+.slider_content{
+    position: relative;
+    &::after{
+        content: "";
+        display: block;
+        width: 100%;
+        height: rem(10);
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        background: $white;
+    }
+}
 .slider_list{
+    padding-bottom: rem(20);
     overflow-x: auto;
     width: 100%;
     box-sizing: border-box;
     -ms-overflow-style: none;
     overflow: -moz-scrollbars-none;
-    &::-webkit-scrollbar { width: 0 !important }
+    // &::-webkit-scrollbar { width: 0 !important }
     @include flex(flex-start);
     -moz-overflow-scrolling: touch;
     -o-overflow-scrolling: touch;
