@@ -84,7 +84,7 @@
       </div>
       <div class="btns">
         <div class="add btn">加入购物车</div>
-        <div class="buy btn">立即购买</div>
+        <div @click="toFirmOrder" class="buy btn">立即购买</div>
       </div>
     </section>
 
@@ -149,6 +149,11 @@ export default {
   methods: {
     showSpec() {
       this.select  = true;
+    },
+    toFirmOrder() {
+      wx.navigateTo({
+        url: "/pages/firm-order/main",
+      })
     }
   },
   components: {

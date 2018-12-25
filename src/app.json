@@ -11,7 +11,8 @@
     "pages/recharge/main",
     "pages/register/main",
     "pages/firm-order/main",
-    "pages/address/main"
+    "pages/address/main",
+    "pages/new-address/main"
   ],
   "window": {
     "backgroundTextStyle": "light",
