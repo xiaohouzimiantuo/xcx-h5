@@ -31,7 +31,8 @@ wx.setStorageSync = ({key, data}) => {
     window.localStorage.setItem(key, data);
 }
 // 注册全局组件
-import { Swipe, SwipeItem, Switch } from 'vant';
+import { Swipe, SwipeItem, Switch, Picker } from 'vant';
 
 Vue.use(Swipe).use(SwipeItem);
 Vue.use(Switch);
+Vue.use(Picker);

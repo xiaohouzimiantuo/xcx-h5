@@ -23,17 +23,17 @@
               <!-- <span class="block">福建省</span>
               <span class="block">厦门市</span>
               <span class="block">思明区</span> -->
-              <picker class="picker"
-        mode="region"
-        @change="bindRegionChange"
-        :value="region"
-        :custom-item="customItem"
-    >
-        <view class="picker">
-        当前选择：{{region[0]}}，{{region[1]}}，{{region[2]}}
-        </view>
-    </picker>
           </p>
+          <picker v-if="env == 'wx'"
+                mode="region"
+                @change="bindRegionChange"
+                :value="region"
+                :custom-item="customItem"
+            >
+                <view class="picker">
+                {{region[0]}}，{{region[1]}}，{{region[2]}}
+                </view>
+        </picker>
           <div class="right_content">
               <p>选择</p>
               <img src="../../assets/imgs/more@2x.png" alt="" class="right_arrow">
@@ -43,35 +43,49 @@
           <input type="text" placeholder="请输入详细地址" class="left_content">
       </li>
     </ul>
-    <picker
-        mode="region"
-        @change="bindRegionChange"
-        :value="region"
-        :custom-item="customItem"
-    >
-        <view class="picker">
-        当前选择：{{region[0]}}，{{region[1]}}，{{region[2]}}
-        </view>
-    </picker>
+    <van-picker :columns="columns" @change="h5City" />
   </div>
 </template>
 
 <script>
+import citys from '@/assets/js/cities';
+let region = ['广东省', '广州市', '海珠区'];
 export default {
   data() {
     return {
+        citys,
         env: process.env._ENV,
         checked: true,
         region: ['广东省', '广州市', '海珠区'],
-        customItem: '全部'
+        customItem: '全部',
+        columns: [
+            {
+                values: Object.keys(citys),
+            },
+            {
+                values: Object.keys(citys[region[0]]),
+            },
+            {
+                values: citys[region[0]][region[1]],
+                defaultIndex: 2
+            },
+        ]
     };
   },
+  created() {
+      console.log(Object.keys(citys));
+      console.log(Object.keys(citys[this.region[0]]));
+      console.log(citys[this.region[0]][this.region[1]]);
+  },
   methods: {
-      switchChange() { //小程序switch不支持v-model
+      switchChange() { //小程序switch组件不支持v-model
           this.checked = !this.checked;
       },
       bindRegionChange() {
           console.log(123)
+      },
+      h5City() {
+
       }
   },
 };
@@ -100,6 +114,7 @@ export default {
     padding: 0 rem(15);
     border-top: rem(1) solid #d9d9d9;
     .info_item{
+        position: relative;
         height: rem(50);
         border-bottom: rem(1) solid #d9d9d9;
         @include flex(space-between);
@@ -122,6 +137,14 @@ export default {
         .right_content{
             flex-shrink: 0;
             @include flex(center);
+        }
+        .picker{
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            @include flex(flex-start);
         }
     }
 }
