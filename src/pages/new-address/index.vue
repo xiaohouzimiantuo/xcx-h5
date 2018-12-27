@@ -24,16 +24,7 @@
               <span class="block">厦门市</span>
               <span class="block">思明区</span> -->
           </p>
-          <picker v-if="env == 'wx'"
-                mode="region"
-                @change="bindRegionChange"
-                :value="region"
-                :custom-item="customItem"
-            >
-                <view class="picker">
-                {{region[0]}}，{{region[1]}}，{{region[2]}}
-                </view>
-        </picker>
+          <city-picker @value="changePos" :region="['福建省', '厦门市', '思明区']"></city-picker>
           <div class="right_content">
               <p>选择</p>
               <img src="../../assets/imgs/more@2x.png" alt="" class="right_arrow">
@@ -43,51 +34,43 @@
           <input type="text" placeholder="请输入详细地址" class="left_content">
       </li>
     </ul>
-    <van-picker :columns="columns" @change="h5City" />
+
+    <section class="btn_wrap">
+        <div class="btn" :class="{can: canSub}">
+            保存
+        </div>
+    </section>
   </div>
 </template>
 
 <script>
-import citys from '@/assets/js/cities';
-let region = ['广东省', '广州市', '海珠区'];
+import cityPicker from '@com/cityPicker';
 export default {
   data() {
     return {
-        citys,
         env: process.env._ENV,
         checked: true,
-        region: ['广东省', '广州市', '海珠区'],
-        customItem: '全部',
-        columns: [
-            {
-                values: Object.keys(citys),
-            },
-            {
-                values: Object.keys(citys[region[0]]),
-            },
-            {
-                values: citys[region[0]][region[1]],
-                defaultIndex: 2
-            },
-        ]
+        pos: null
     };
   },
+  computed: {
+      canSub() {
+          return true;
+      }
+  },
   created() {
-      console.log(Object.keys(citys));
-      console.log(Object.keys(citys[this.region[0]]));
-      console.log(citys[this.region[0]][this.region[1]]);
   },
   methods: {
       switchChange() { //小程序switch组件不支持v-model
           this.checked = !this.checked;
       },
-      bindRegionChange() {
-          console.log(123)
-      },
-      h5City() {
-
+      changePos(value) {
+          this.pos = value;
       }
   },
+  components: {
+      cityPicker
+  }
 };
 </script>
 
@@ -146,6 +129,22 @@ export default {
             left: 0;
             @include flex(flex-start);
         }
+    }
+}
+.btn_wrap{
+    margin-top: rem(60);
+    padding: 0 rem(50);
+    .btn{
+        height: rem(44);
+        @include flex(center);
+        border-radius: rem(22);
+        font-size: rem(16);
+        background: #DFDFDF;
+        color: #FFFFFF;
+    }
+    .can{
+        background: #0088FF;
+        background-image: linear-gradient(90deg, #20B3FF 0%, #0088FF 100%);
     }
 }
 </style>
