@@ -4,7 +4,7 @@
     <header class="head_wrap">
       <div class="input_wrap">
         <img class="input_img" src="../../assets/imgs/magnifier@2x.png" alt="">
-        <input @click="toSearch" class="search" type="text" placeholder="搜索你感兴趣的东西">
+        <input class="search" type="text" placeholder="搜索你感兴趣的东西">
       </div>
       <div class="msg_wrap">
         <span>搜索</span>

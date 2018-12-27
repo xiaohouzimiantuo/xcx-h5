@@ -7,7 +7,7 @@
     <section class="select_content">
         <h1 class="title">地址设置</h1>
         <div class="selector">
-            <section class="selected" @click="toAddress">
+            <section class="selected" @click="chooseAddress">
                 <div class="img_box">
                     <img src="../../assets/imgs/pos@2x.png" alt="" class="img">
                 </div>
@@ -84,7 +84,7 @@
 
     <section class="settlement">
         <p>应付：¥499.00</p>
-        <div class="settlement_btn">去付款</div>
+        <div @click="toResult" class="settlement_btn">去付款</div>
     </section>
   </div>
 </template>
@@ -100,9 +100,14 @@ export default {
     changeTab(index) {
       this.tabIndex = index;
     },
-    toAddress(){
+    chooseAddress(){
       wx.navigateTo({
-        url: "/pages/address/main"
+        url: "/pages/choose-address/main"
+      });
+    },
+    toResult() {
+      wx.navigateTo({
+        url: "/pages/pay-result/main"
       });
     }
   }

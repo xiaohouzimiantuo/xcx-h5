@@ -12,7 +12,12 @@
     "pages/register/main",
     "pages/firm-order/main",
     "pages/address/main",
-    "pages/new-address/main"
+    "pages/new-address/main",
+    "pages/choose-address/main",
+    "pages/pay-result/main",
+    "pages/bank/main",
+    "pages/add-bank/main",
+    "pages/cash/main"
   ],
   "window": {
     "backgroundTextStyle": "light",

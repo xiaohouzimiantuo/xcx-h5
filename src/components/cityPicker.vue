@@ -157,6 +157,7 @@ export default {
   left: 0;
   transition: all 0.5s ease;
   background: $white;
+  z-index: 99;
 }
 .show {
   bottom: 0;

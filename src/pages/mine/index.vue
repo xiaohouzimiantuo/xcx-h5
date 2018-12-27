@@ -31,7 +31,7 @@
             </div>
             <div class="btns">
                 <div @click="toRecharge" class="btn add">充值</div>
-                <div class="btn out">提现</div>
+                <div @click="toCash" class="btn out">提现</div>
             </div>
         </div>
     </section>
@@ -64,7 +64,7 @@
                 <img src="../../assets/imgs/right_arrow@2x.png" alt="" class="img">
             </div>
         </li>
-        <li class="info_item">
+        <li @click="toAddress" class="info_item">
             <div class="left_content">
                 <span>地址管理</span>
             </div>
@@ -72,7 +72,7 @@
                 <img src="../../assets/imgs/right_arrow@2x.png" alt="" class="img">
             </div>
         </li>
-        <li class="info_item">
+        <li @click="toBank" class="info_item">
             <div class="left_content">
                 <span>银行卡管理</span>
             </div>
@@ -126,6 +126,21 @@ export default {
         url: '/pages/order/main'
       });
     },
+    toAddress() {
+      wx.navigateTo({
+        url: '/pages/address/main'
+      });
+    },
+    toBank() {
+      wx.navigateTo({
+        url: '/pages/bank/main'
+      });
+    },
+    toCash() {
+      wx.navigateTo({
+        url: '/pages/cash/main'
+      });
+    }
   },
   components: {
     Tab

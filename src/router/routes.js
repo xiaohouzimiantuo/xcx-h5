@@ -76,4 +76,24 @@ export default [
         path: '/new-address',
         component: () => import('@pages/new-address')
     },
+    {
+        path: '/choose-address',
+        component: () => import('@pages/choose-address')
+    },
+    {
+        path: '/pay-result',
+        component: () => import('@pages/pay-result')
+    },
+    {
+        path: '/bank',
+        component: () => import('@pages/bank')
+    },
+    {
+        path: '/add-bank',
+        component: () => import('@pages/add-bank')
+    },
+    {
+        path: '/cash',
+        component: () => import('@pages/cash')
+    },
 ]
