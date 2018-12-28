@@ -17,7 +17,10 @@
     "pages/pay-result/main",
     "pages/bank/main",
     "pages/add-bank/main",
-    "pages/cash/main"
+    "pages/cash/main",
+    "pages/invoice/main",
+    "pages/rise/main",
+    "pages/draw-bill/main"
   ],
   "window": {
     "backgroundTextStyle": "light",

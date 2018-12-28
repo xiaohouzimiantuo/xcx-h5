@@ -56,7 +56,7 @@
     </ul>
 
     <ol class="info_list">
-        <li class="info_item">
+        <li @click="toInvoice" class="info_item">
             <div class="left_content">
                 <span>发票管理</span>
             </div>
@@ -116,6 +116,11 @@
 import Tab from "@com/tab";
 export default {
   methods: {
+    toInvoice() {
+      wx.navigateTo({
+        url: '/pages/draw-bill/main'
+      });
+    },
     toRecharge() {
       wx.navigateTo({
         url: '/pages/recharge/main'

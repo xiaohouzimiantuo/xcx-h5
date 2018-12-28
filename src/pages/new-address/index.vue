@@ -7,8 +7,7 @@
       <li class="info_item">
           <p class="left_content">设为默认地址</p>
           <div class="right_content">
-              <switch :checked="checked" v-if="env == 'wx'" @click="switchChange" color="#0088FF" />
-              <van-switch v-else v-model="checked" active-color="#0088FF" />
+              <my-switch :value="checked" @change="changeSwitch"></my-switch>
           </div>
       </li>
       <li class="info_item">
@@ -45,6 +44,7 @@
 
 <script>
 import cityPicker from '@com/cityPicker';
+import MySwitch from '@com/switch';
 export default {
   data() {
     return {
@@ -61,15 +61,15 @@ export default {
   created() {
   },
   methods: {
-      switchChange() { //小程序switch组件不支持v-model
-          this.checked = !this.checked;
+      changeSwitch(value) { 
+          this.checked = value;
       },
       changePos(value) {
           this.pos = value;
       }
   },
   components: {
-      cityPicker
+      cityPicker, MySwitch
   }
 };
 </script>

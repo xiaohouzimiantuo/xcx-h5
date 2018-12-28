@@ -96,4 +96,16 @@ export default [
         path: '/cash',
         component: () => import('@pages/cash')
     },
+    {
+        path: '/invoice',
+        component: () => import('@pages/invoice')
+    },
+    {
+        path: '/rise',
+        component: () => import('@pages/rise')
+    },
+    {
+        path: '/draw-bill',
+        component: () => import('@pages/draw-bill')
+    },
 ]

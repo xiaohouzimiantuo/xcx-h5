@@ -47,6 +47,7 @@ export default {
   @include flex(flex-start);
   height: rem(40);
   font-size: rem(20);
+  font-weight: bold;
 }
 .input_box {
   position: relative;

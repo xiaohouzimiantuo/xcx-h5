@@ -1,29 +1,56 @@
 <template>
-  <div class="address">
+  <div class="cash">
     <header class="head">
       提现
     </header>
     
+    <section class="container">
+      <div class="card">
+        <p>添加银行卡</p>
+        <div class="right_arrow">
+            <img src="../../assets/imgs/right_arrow@2x.png" alt="" class="img">
+        </div>
+      </div>
+
+      <div class="amount">
+        <header class="title">提现金额</header>
+        <div class="input_box">
+          <span class="unit">￥</span>
+          <input type="text" class="money" placeholder="当前余额88.00">
+          <span class="isall">全部提现</span>
+        </div>
+      </div>
+      <div class="remark">
+        备注：每天可申请提现3次，每次超过5000需要人工审核，每天可提现总金额50000
+      </div>
+    </section>
+
+    <div class="btn_wrap">
+      <div class="btn" :class="{can: canSub}">提现</div>
+    </div>
   </div>
 </template>
 
 <script>
-import Tick from '@com/tick';
 export default {
   data() {
     return {
-      tabIndex: 0
+      canSub: true
     };
   },
-  components: {
-      Tick
-  }
 };
 </script>
 
 <style lang="scss" scoped>
 @import "~@css/mixin.scss";
-.address {
+.right_arrow {
+  margin-left: rem(14);
+  flex-shrink: 0;
+  width: rem(7);
+  height: rem(12);
+  font-size: 0;
+}
+.cash {
   font-size: rem(14);
   color: #333333;
   padding-bottom: rem(50);
@@ -33,35 +60,102 @@ export default {
   padding-left: rem(16);
   font-size: rem(20);
   color: #333333;
-  margin-bottom: rem(30);
+  font-weight: bold;
 }
-.address_list {
-  padding: 0 rem(15);
-  border-top: rem(1) solid #d9d9d9;
-  .list_item {
-    padding: rem(15) 0;
-    border-bottom: rem(1) solid #d9d9d9;
+.container {
+  margin-top: rem(10);
+  padding-left: rem(16);
+  position: relative;
+  &::before {
+    content: "";
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: rem(2);
+    background: #000;
+    opacity: 0.1;
+  }
+}
+
+.card{
+  height: rem(54);
+  padding-left: rem(8);
+  margin-right: rem(16);
+  position: relative;
+  @include flex(space-between);
+  &::after {
+    content: "";
+    display: block;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: rem(1);
+    background: #000;
+    opacity: 0.1;
+  }
+}
+
+.amount{
+  margin-top: rem(20);
+  font-size: rem(16);
+  .title{
+    font-weight: bold;
+  }
+  .input_box{
+    margin-top: rem(10);
+    padding: rem(8) 0;
+    position: relative;
     @include flex(space-between);
-    .content{
-        width: 100%;
-        margin-left: rem(10);
+    &::after {
+      content: "";
+      display: block;
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: rem(2);
+      background: #000;
+      opacity: 0.1;
     }
-    .user_info {
-      margin-bottom: rem(10);
-      @include flex(space-between);
-      .name {
-        flex-shrink: 0;
-        margin-right: rem(20);
-      }
-      .phone {
-        width: 100%;
-        @include line-clamp(1);
-      }
-      .default {
-        flex-shrink: 0;
-        color: #7f807f;
-      }
+    .unit{
+      flex-shrink: 0;
+    }
+    .money{
+      margin-left: rem(6);
+      width: 100%;
+    }
+    .isall{
+      margin-right: rem(16);
+      flex-shrink: 0;
+      color: #0088FF;
     }
   }
 }
+.remark{
+  margin-top: rem(10);
+  padding-right: rem(16);
+  color: #999999;
+}
+
+.btn_wrap{
+  padding: rem(50);
+  margin-top: rem(60);
+  .btn{
+    width: 100%;
+    height: rem(44);
+    @include flex(center);
+    font-size: rem(16);
+    color: #FFFFFF;
+    background: #DFDFDF;
+    border-radius: rem(22);
+  }
+  .can{
+    background: #0088FF;
+    background-image: linear-gradient(90deg, #20B3FF 0%, #0088FF 100%);
+  }
+}
+
 </style>
