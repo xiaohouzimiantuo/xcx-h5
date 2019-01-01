@@ -39,6 +39,10 @@ Vue.use(Picker);
 Vue.use(Toast);
 
 wx.showToast = ({title}) => {
+    // Toast({
+    //     mask: true,
+    //     message: title
+    // });
     Toast(title);
 };
 

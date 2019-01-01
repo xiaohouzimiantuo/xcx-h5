@@ -1,14 +1,62 @@
 <template>
   <div class="count">
-    <p class="minus cannot">-</p>
-    <p class="num">1</p>
-    <p class="plus">+</p>
+    <p class="minus" :class="{cannot: !canMinus}" @click="minus">-</p>
+    <p class="num">{{count}}</p>
+    <p class="plus" :class="{cannot: !canPlus}" @click="plus">+</p>
   </div>
 </template>
 
 <script>
+import toast from '@com/toast';
 export default {
-  
+  props: {
+      value: {
+          default: 1
+      },
+      max: {
+          default: 100
+      },
+      min: {
+          default: 1
+      }
+  },
+  data() {
+      return {
+          count: 1
+      };
+  },
+  created() {
+      this.count = this.value;
+    //   wx.showLoading({mask: true});
+  },
+  computed: {
+      canPlus() {
+          if(this.count < this.max) {
+              return true;
+          }
+          return false;
+      },
+      canMinus() {
+          if(this.count > this.min) return true;
+          return false;
+      }
+  },
+  methods: {
+      plus() {
+          if(this.canPlus) {
+              this.count++;
+          }else {
+              wx.showToast({title: '不可以再加了'});
+          }
+      },
+      minus() {
+          if(this.canMinus) {
+              this.count--;
+          }else {
+              wx.showToast({title: '不可以再减了', icon: 'loading', mask: true});
+          }
+      }
+  }
 };
 </script>
 
