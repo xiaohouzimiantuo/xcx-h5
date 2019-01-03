@@ -14,7 +14,7 @@
     </section>
     
     <section ref="city_picker" v-if="env != 'wx'" class="picker_info" :class="{show: pickerShow}">
-        <van-picker :show-toolbar="true" :columns="columns" @cancel="cancel" @confirm="confirm" @change="cahngeCity"/>
+        <van-picker :show-toolbar="true" :columns="columns" @cancel="cancel" @confirm="confirm" @change="changeCity"/>
     </section>
   </div>
 </template>
@@ -125,12 +125,11 @@ export default {
     cancel() {
       this.pickerShow = false;
     },
-    cahngeCity(picker) {
+    changeCity(picker) {
       let values = picker.getValues();
-      if (this.region[0] == values[0]) {
-        if (this.region[1] != values[0]) {
-          this._initColumns([values[0], values[1], null]);
-        }
+      let curCitys = Object.keys(citys[values[0]]);
+      if (curCitys.indexOf(values[1]) != -1) {
+        this._initColumns([values[0], values[1], null]);
       } else {
         this._initColumns([values[0], null, null]);
       }
