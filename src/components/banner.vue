@@ -21,40 +21,37 @@
     </van-swipe>
   </div>
 </template>
-
 <script>
-
 export default {
-  data () {
+  data() {
     return {
-        env: process.env._ENV,
-        options: {
-            dots: true, //指示点
-            autoplay: true, //自动切换
-            interval: 5000, //自动切换时间
-            duration: 500, //动画时长
-            imgs: [
-                'http://scell.qiyuanlian.top/static/img/banner001.7b232ac.png',
-                'http://scell.qiyuanlian.top/static/img/news_banner.39562f5.png',
-                'http://scell.qiyuanlian.top/static/img/banner.359d061.png'
-            ]
-        }
-    }
+      env: process.env._ENV,
+      options: {
+        dots: true, //指示点
+        autoplay: true, //自动切换
+        interval: 5000, //自动切换时间
+        duration: 500, //动画时长
+        imgs: [
+          "http://scell.qiyuanlian.top/static/img/banner001.7b232ac.png",
+          "http://scell.qiyuanlian.top/static/img/news_banner.39562f5.png",
+          "http://scell.qiyuanlian.top/static/img/banner.359d061.png"
+        ]
+      }
+    };
   },
-  created() {
-      
-  }
-  
-}
+  methods: {
+  },
+  created() {}
+};
 </script>
 
 <style lang="scss" scoped>
-@import '~@css/mixin.scss';
-.van-swipe{
-    height: rem(150);
+@import "~@css/mixin.scss";
+.van-swipe {
+  height: rem(150);
 }
-.slide-image{
-    width: 100%;
-    height: 100%;
+.slide-image {
+  width: 100%;
+  height: 100%;
 }
 </style>

@@ -1,8 +1,8 @@
 <template>
   <div>
     <transition name="router">
-        <router-view></router-view>
-      </transition>
+      <router-view></router-view>
+    </transition>
   </div>
 </template>
 
@@ -10,9 +10,9 @@
 // import citys from '@/assets/js/citys';
 // let o = {}
 // citys.forEach(p => {
-  //   o[p.name] = {};
+//   o[p.name] = {};
 //   p.city.forEach(c => {
-  //     o[p.name][c.name] = c.area;
+//     o[p.name][c.name] = c.area;
 //   })
 // });
 // console.log(o)
@@ -23,13 +23,8 @@
 export default {
   created() {
     wx.redirectTo({
-      url: '/pages/login/main'
+      url: "/pages/login/main"
     });
-  },
-  // watch: {
-  //   $route({query}) {
-  //     window.query = query;
-  //   }
-  // }
+  }
 };
 </script>
