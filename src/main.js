@@ -1,7 +1,7 @@
 import Vue from "vue";
 import App from "./App";
 import router from "./router";
-
+Vue.prototype._global = {};
 Vue.config.productionTip = false;
 // console.log(process.env._ENV);
 if (process.env._ENV == "h5") {
