@@ -4,96 +4,118 @@
 
     <section class="input_wrap">
       <div class="input_box">
-        <input v-model="subData.mobile" @input="checkRegister" type="text" placeholder="请输入手机号">
+        <input v-model="subData.mobile" type="text" placeholder="请输入手机号">
       </div>
 
       <!-- 密码 -->
-      <div v-if="!pwdShow" class="input_box">
-        <input v-model="subData.pwd" type="text" @input="checkRegister" placeholder="请输入密码">
+      <div v-if="pwdShow" class="input_box">
+        <input v-model="subData.pwd" type="text" placeholder="请输入密码">
         <div class="eye" @click="showPwd">
-          <img src="../../assets/imgs/eye_close@2x.png" alt="" class="eye_close">
+          <img src="../../assets/imgs/Shape@2x.png" alt class="eye_close">
         </div>
       </div>
       <div v-else class="input_box">
-        <input v-model="subData.pwd" @input="checkRegister" type="password" placeholder="请输入密码">
+        <input v-model="subData.pwd" type="password" placeholder="请输入密码">
         <div class="eye" @click="showPwd">
-          <img src="../../assets/imgs/Shape@2x.png" alt="" class="eye_open">
+          <img src="../../assets/imgs/eye_close@2x.png" alt class="eye_open">
         </div>
       </div>
 
       <!-- 验证码 -->
       <div class="input_box">
-        <input v-model="subData.code" @input="checkRegister" type="number" placeholder="短信验证码">
-        <div @click="sendCode" class="code_btn" :class="{sending: count > 0}">
-          {{codeInfo}}
-        </div>
+        <input v-model="subData.code" type="number" placeholder="短信验证码">
+        <div @click="sendCode" class="code_btn" :class="{sending: count > 0}">{{codeInfo}}</div>
       </div>
     </section>
 
     <section class="agreement">
-        <img @click="read" v-if="readed" src="../../assets/imgs/closexian@2x.png" alt="" class="agr_img">
-        <img @click="read" v-else src="../../assets/imgs/un@2x.png" alt="" class="agr_img">
-        <span>找回密码 </span>
-        <span class="blue_text">《蓝星人水产公约》 </span>
+      <img @click="read" v-if="readed" src="../../assets/imgs/closexian@2x.png" alt class="agr_img">
+      <img @click="read" v-else src="../../assets/imgs/un@2x.png" alt class="agr_img">
+      <span>找回密码</span>
+      <span class="blue_text">《蓝星人水产公约》</span>
     </section>
 
     <section class="btn_wrap">
-      <div @click="toLogin" class="sub_btn" :class="{can: canRegister}">注册</div>
+      <div @click="register" class="sub_btn" :class="{can: canRegister}">注册</div>
     </section>
+    <container></container>
   </div>
 </template>
 
 <script>
-import AccountHead from '@com/accountHead';
-import { setInterval, clearTimeout, clearInterval } from 'timers';
+import { _register, _sendCode } from "@/http/apis";
+import AccountHead from "@com/accountHead";
 const phoneReg = /^1[34578]\d{9}$/;
 export default {
   data() {
     return {
       pwdShow: false,
-      canRegister: false,
       count: 0,
-      codeInfo: '发送验证码',
       readed: false,
       subData: {
-        mobile: '',
-        pwd: '',
-        code: ''
+        mobile: "",
+        pwd: "",
+        code: ""
       }
+    };
+  },
+  computed: {
+    codeInfo() {
+      return this.count > 0 ? `重新获取${this.count}s` : "发送验证码";
+    },
+    canRegister() {
+      return (
+        phoneReg.test(this.subData.mobile) &&
+        this.subData.pwd.length >= 6 &&
+        this.subData.code.length >= 6 &&
+        this.readed
+      );
     }
   },
   methods: {
     showPwd() {
       this.pwdShow = !this.pwdShow;
     },
-    checkRegister() {
-      if(phoneReg.test(this.subData.mobile) && this.subData.pwd.length >= 6 && this.subData.code.length >= 6) {
-        this.canRegister = true;
-      }else {
-        this.canRegister = false;
-      }
-    },
     read() {
       this.readed = !this.readed;
     },
     sendCode() {
-      if(this.count > 0) return;
-      clearInterval(this.timer);
-      this.count = 59;
-      this.codeInfo = `重新获取${this.count}s`;
-      this.timer = setInterval(() => {
-        if(this.count > 0) {
-          this.count--;
-          this.codeInfo = `重新获取${this.count}s`;
-        }else {
-          clearInterval(this.timer);
-          this.codeInfo = '发送验证码';
-        }
-      }, 1000);
+      // type=0&mobile=18760410125&flag=register
+      if (this.count > 0) return;
+      if (!phoneReg.test(this.subData.mobile))
+        return this._toast("请检查手机号");
+      const data = {
+        mobile: this.subData.mobile,
+        type: 0,
+        flag: "register"
+      };
+      _sendCode(data).then(res => {
+        this._toast(res.message);
+        clearInterval(this.timer);
+        this.count = 59;
+        this.timer = setInterval(() => {
+          if (this.count > 0) {
+            this.count--;
+          } else {
+            clearInterval(this.timer);
+          }
+        }, 1000);
+      });
     },
-    toLogin() {
-      wx.redirectTo({
-        url: '/pages/login/main'
+    register() {
+      if (!this.canRegister) return this._toast("请填写完整");
+      const data = {
+        tel: this.subData.mobile, //电话
+        pw: this.subData.pwd, //密码
+        smscode: this.subData.code, //验证码 888888
+        code: "", //邀请码
+        login_imei: "", //手机识别号
+        client_type: "2", //客户端来源 1、pc；2、H5；3、ios；4、android
+        project: "FISH" //项目标识
+      };
+      _register.call(this, data).then(res => {
+        this._toast(res.message);
+        this._router.replace("/pages/index/main");
       });
     }
   },
@@ -105,45 +127,45 @@ export default {
 
 <style lang="scss" scoped>
 @import "~@css/mixin.scss";
-.input_wrap{
+.input_wrap {
   margin-top: rem(62);
   padding-left: rem(30);
   padding-right: rem(45);
-  .input_box{
+  .input_box {
     position: relative;
     @include flex(center);
     margin-top: rem(14);
-    .code_btn{
+    .code_btn {
       flex-shrink: 0;
       font-size: rem(16);
-      color: #0088FF;
+      color: #0088ff;
     }
-    .sending{
-      color: #B1B1B1;
+    .sending {
+      color: #b1b1b1;
     }
-    .eye{
+    .eye {
       flex-shrink: 0;
-      width: rem(34);
+      width: rem(20);
       font-size: 0;
       height: 100%;
       padding-right: rem(5);
       @include flex(center);
-      .eye_close{
-        height: rem(16);
+      .eye_close {
+        height: rem(20);
       }
-      .eye_open{
-        height: rem(22);
+      .eye_open {
+        height: rem(20);
       }
     }
-    input{
+    input {
       width: 100%;
       font-size: rem(16);
       padding: rem(15) rem(10) rem(15) rem(12);
     }
-    &:first-child{
+    &:first-child {
       margin-top: 0;
     }
-    &::after{
+    &::after {
       content: "";
       display: block;
       position: absolute;
@@ -156,34 +178,34 @@ export default {
     }
   }
 }
-.agreement{
+.agreement {
   padding-top: rem(14);
   padding-left: rem(30);
   @include flex(flex-start);
   font-size: rem(12);
-  .agr_img{
+  .agr_img {
     width: rem(18);
     height: rem(18);
     margin-right: rem(10);
   }
-  .blue_text{
-    color: #0088FF;
+  .blue_text {
+    color: #0088ff;
   }
 }
-.btn_wrap{
+.btn_wrap {
   margin-top: rem(50);
   padding: 0 rem(50);
-  .sub_btn{
+  .sub_btn {
     @include flex(center);
     width: 100%;
     height: rem(44);
-    background: #DFDFDF;
+    background: #dfdfdf;
     border-radius: rem(22);
-    color: #FFFFFF;
+    color: #ffffff;
   }
-  .can{
-    background: #0088FF;
-    background-image: linear-gradient(90deg, #20B3FF 0%, #0088FF 100%);
+  .can {
+    background: #0088ff;
+    background-image: linear-gradient(90deg, #20b3ff 0%, #0088ff 100%);
   }
 }
 </style>

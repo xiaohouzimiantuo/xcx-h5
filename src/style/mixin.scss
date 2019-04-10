@@ -1,55 +1,58 @@
 //variables
-$default:#0088FF;
-$tab_nor: #7F7F7F;
+$default: #0088ff;
+$tab_nor: #7f7f7f;
 $white: #fff;
 
 //mixin
 @mixin flex($position) {
-    display: flex;
-    align-items: center;
-    justify-content: $position;
+  display: flex;
+  align-items: center;
+  justify-content: $position;
 }
 
 @mixin fc($position) {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: $position;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: $position;
 }
 
-
-@function rem ($px) {
-    @return $px/18.75+rem;
+@function rem($px) {
+  @return $px/16 + rem;
 }
 
 @mixin lh($unit) {
-    height: $unit;
-    line-height: $unit;
+  height: $unit;
+  line-height: $unit;
 }
 
 @mixin line-clamp($line) {
-    display: -webkit-box;
-    /*! autoprefixer: off */
-    -webkit-box-orient: vertical;
-     /* autoprefixer: on */
-    -webkit-line-clamp: $line;
-    overflow: hidden;
+  display: -webkit-box;
+  /*! autoprefixer: off */
+  -webkit-box-orient: vertical;
+  /* autoprefixer: on */
+  -webkit-line-clamp: $line;
+  overflow: hidden;
 }
 
-.img{
+.img {
   width: 100%;
   height: 100%;
 }
 
-input::-webkit-input-placeholder { /* WebKit browsers */ 
-    color: #7F807F;
-} 
-input:-moz-placeholder { /* Mozilla Firefox 4 to 18 */ 
-    color: #7F807F;
-} 
-input::-moz-placeholder { /* Mozilla Firefox 19+ */ 
-    color: #7F807F;
-} 
-input:-ms-input-placeholder { /* Internet Explorer 10+ */ 
-    color: #7F807F;
-} 
+input::-webkit-input-placeholder {
+  /* WebKit browsers */
+  color: #7f807f;
+}
+input:-moz-placeholder {
+  /* Mozilla Firefox 4 to 18 */
+  color: #7f807f;
+}
+input::-moz-placeholder {
+  /* Mozilla Firefox 19+ */
+  color: #7f807f;
+}
+input:-ms-input-placeholder {
+  /* Internet Explorer 10+ */
+  color: #7f807f;
+}

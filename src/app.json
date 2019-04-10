@@ -6,7 +6,7 @@
     "pages/cart/main",
     "pages/mine/main",
     "pages/cashier/main",
-    "pages/login/main",
+    "pages/shop/main",
     "pages/order/main",
     "pages/recharge/main",
     "pages/register/main",
@@ -20,12 +20,16 @@
     "pages/cash/main",
     "pages/invoice/main",
     "pages/rise/main",
-    "pages/draw-bill/main"
+    "pages/draw-bill/main",
+    "pages/more/main"
   ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "蓝星人水产",
+    "navigationBarTitleText": "小鱼人",
     "navigationBarTextStyle": "black"
+  },
+  "usingComponents": {
+    "van-toast": "static/vant-weapp/toast/index"
   }
 }

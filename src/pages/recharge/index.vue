@@ -16,21 +16,22 @@
 export default {
   data() {
     return {
-      sum: '',
+      sum: "",
       can: false
     };
   },
+  created() {},
   methods: {
     checkCan() {
-      if(parseFloat(this.sum) >= 0.01) {
+      if (parseFloat(this.sum) >= 0.01) {
         this.can = true;
-      }else {
+      } else {
         this.can = false;
       }
     },
     toCashier() {
       wx.navigateTo({
-        url: '/pages/cashier/main'
+        url: "/pages/cashier/main"
       });
     }
   }
@@ -74,20 +75,20 @@ export default {
     font-size: rem(14);
   }
 }
-.btn_wrap{
+.btn_wrap {
   margin-top: rem(100);
   padding: 0 rem(34);
-  .sub_btn{
+  .sub_btn {
     @include flex(center);
     width: 100%;
     height: rem(44);
-    background: #DFDFDF;
+    background: #dfdfdf;
     border-radius: rem(22);
-    color: #FFFFFF;
+    color: #ffffff;
   }
-  .can{
-    background: #0088FF;
-    background-image: linear-gradient(90deg, #20B3FF 0%, #0088FF 100%);
+  .can {
+    background: #0088ff;
+    background-image: linear-gradient(90deg, #20b3ff 0%, #0088ff 100%);
   }
 }
 </style>

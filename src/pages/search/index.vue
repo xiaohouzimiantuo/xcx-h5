@@ -3,15 +3,15 @@
     <!-- 头部搜索部分 -->
     <header class="head_wrap">
       <div class="input_wrap">
-        <img class="input_img" src="../../assets/imgs/magnifier@2x.png" alt="">
+        <img class="input_img" src="../../assets/imgs/magnifier@2x.png" alt>
         <input class="search" type="text" placeholder="搜索你感兴趣的东西">
       </div>
       <div class="msg_wrap">
-        <span>搜索</span>
+        <span class="search_span">搜索</span>
       </div>
     </header>
     <section>
-      <info-head :arrow="false">
+      <info-head>
         <p slot="title">搜索记录</p>
       </info-head>
       <ul class="history_list">
@@ -25,17 +25,15 @@
 </template>
 
 <script>
-import InfoHead from '@com/infoHead';
+import InfoHead from "@com/infoHead";
 export default {
   data() {
     return {};
   },
   created() {},
-  methods: {
-
-  },
+  methods: {},
   components: {
-      InfoHead
+    InfoHead
   }
 };
 </script>
@@ -74,8 +72,8 @@ export default {
       .input_img {
         font-size: rem(13);
         margin-right: rem(10);
-        width: rem(12);
-        height: rem(12);
+        width: rem(13);
+        height: rem(13);
       }
       .search {
         height: 100%;
@@ -88,27 +86,28 @@ export default {
       margin-left: rem(6);
       margin-right: rem(6);
       font-size: rem(14);
-      color: #0088FF;
+      color: #0088ff;
+      font-family: "PingFangSC-Regular";
       .msg_img {
         width: rem(18);
         height: rem(18);
       }
     }
   }
-  .history_list{
-      @include flex(flex-start);
-      flex-wrap: wrap;
-      padding: 0 rem(13);
-      .his_item{
-          flex-shrink: 0;
-          margin-right: rem(12);
-          margin-bottom: rem(12);
-          padding: rem(2) rem(20);
-          background: #F4F4F4;
-          border-radius: rem(3);
-          font-size: rem(13);
-          color: #666666;
-      }
+  .history_list {
+    @include flex(flex-start);
+    flex-wrap: wrap;
+    padding: 0 rem(13);
+    .his_item {
+      flex-shrink: 0;
+      margin-right: rem(12);
+      margin-bottom: rem(12);
+      padding: rem(6) rem(20);
+      background: #f4f4f4;
+      border-radius: rem(3);
+      font-size: rem(13);
+      color: #666666;
+    }
   }
 }
 </style>

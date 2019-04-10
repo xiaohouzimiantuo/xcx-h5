@@ -90,7 +90,9 @@
 
     <section class="spec_content" :class="{show: select}">
       <div class="product">
-        <div class="img_box"><img class="img" src="../../assets/imgs/more@2x.png" alt=""></div>
+        <div class="img_box">
+          <img class="img" src="../../assets/imgs/more@2x.png" alt>
+        </div>
         <div class="product_info">
           <p>
             <span class="price">￥378</span>
@@ -100,32 +102,50 @@
           <p class="other">请选择规格属性</p>
         </div>
         <div class="close" @click="select = false">
-          <img class="img" src="../../assets/imgs/close@2x.png" alt="">
+          <img class="img" src="../../assets/imgs/close@2x.png" alt>
         </div>
       </div>
 
       <div class="spec_item">
         <h5 class="title">到港日期</h5>
         <ul class="infos">
-          <li class="item"><p class="inner active">12-18到港</p></li>
-          <li class="item"><p class="inner">12-18到港</p></li>
-          <li class="item"><p class="inner">12-18到港</p></li>
+          <li class="item">
+            <p class="inner active">12-18到港</p>
+          </li>
+          <li class="item">
+            <p class="inner">12-18到港</p>
+          </li>
+          <li class="item">
+            <p class="inner">12-18到港</p>
+          </li>
         </ul>
       </div>
       <div class="spec_item">
         <h5 class="title">包装规格</h5>
         <ul class="infos">
-          <li class="item"><p class="inner active">12-18到港</p></li>
-          <li class="item"><p class="inner">12-18到港</p></li>
-          <li class="item"><p class="inner">12-18到港</p></li>
+          <li class="item">
+            <p class="inner active">12-18到港</p>
+          </li>
+          <li class="item">
+            <p class="inner">12-18到港</p>
+          </li>
+          <li class="item">
+            <p class="inner">12-18到港</p>
+          </li>
         </ul>
       </div>
       <div class="spec_item">
         <h5 class="title">级别</h5>
         <ul class="infos">
-          <li class="item"><p class="inner active">12-18到港</p></li>
-          <li class="item"><p class="inner">12-18到港</p></li>
-          <li class="item"><p class="inner">12-18到港</p></li>
+          <li class="item">
+            <p class="inner active">12-18到港</p>
+          </li>
+          <li class="item">
+            <p class="inner">12-18到港</p>
+          </li>
+          <li class="item">
+            <p class="inner">12-18到港</p>
+          </li>
         </ul>
       </div>
       <div class="spec_item">
@@ -139,7 +159,7 @@
 </template>
 
 <script>
-import Count from '@com/count';
+import Count from "@com/count";
 export default {
   data() {
     return {
@@ -148,12 +168,12 @@ export default {
   },
   methods: {
     showSpec() {
-      this.select  = true;
+      this.select = true;
     },
     toFirmOrder() {
       wx.navigateTo({
-        url: "/pages/firm-order/main",
-      })
+        url: "/pages/firm-order/main"
+      });
     }
   },
   components: {
@@ -175,6 +195,7 @@ export default {
 .goods_info {
   border-bottom: rem(1) solid #d6d6d6;
   .title {
+    font-family: "PingFangSC-Medium";
     font-size: rem(16);
     color: #333333;
     line-height: rem(20);
@@ -187,12 +208,13 @@ export default {
     color: #999999;
     .now_pice {
       .money {
+        font-family: "PingFangSC-Medium";
         margin-right: rem(5);
         font-size: rem(18);
         color: #ff3b30;
       }
-      .other_price{
-        margin-left: rem(14)
+      .other_price {
+        margin-left: rem(14);
       }
     }
     .sales {
@@ -262,24 +284,29 @@ export default {
   // padding: 0 rem(15);
   box-sizing: border-box;
   background: $white;
-  .icon_box{
+  background: #ffffff;
+  box-shadow: 0 -2px 8px 0 rgba(0, 0, 0, 0.1);
+  z-index: 99;
+  .icon_box {
     @include flex(center);
     height: 100%;
     .headset,
     .cart {
+      flex-shrink: 0;
       position: relative;
       flex-shrink: 0;
       width: rem(60);
       height: 100%;
       @include flex(center);
       .img {
-        width: rem(30);
-        height: rem(30);
+        width: rem(25);
+        height: rem(25);
+        flex-shrink: 0;
       }
-      .count{
+      .count {
         display: block;
-        width: rem(16);
-        height: rem(16);
+        width: rem(14);
+        height: rem(14);
         @include flex(center);
         position: absolute;
         right: rem(10);
@@ -292,16 +319,16 @@ export default {
     }
   }
   .btns {
-    margin-left: rem(20);
-    margin-right: rem(16);
+    // margin-left: rem(15);
+    margin-right: rem(15);
     @include flex(center);
     .btn {
       @include flex(center);
-      // width: rem(98);
-      // height: rem(30);
-      padding: rem(5) rem(14);
+      width: rem(98);
+      height: rem(30);
+      // padding: rem(5) rem(14);
       border-radius: rem(20);
-      font-size: rem(12);
+      font-size: rem(14);
     }
     .add {
       border: rem(1) solid #0088ff;
@@ -316,76 +343,79 @@ export default {
   }
 }
 
-.spec_content{
-  box-sizing: border-box;
+.spec_content {
   padding: rem(18) rem(15);
+  box-sizing: border-box;
   position: fixed;
   width: 100%;
-  bottom: -100%;
+  bottom: -110%;
   left: 0;
-  transition: all .5s ease;
+  max-height: rem(500);
+  overflow: auto;
+  transition: all 0.5s ease;
   background: $white;
   border-top-left-radius: rem(20);
   border-top-right-radius: rem(20);
-  .product{
+  .product {
     height: rem(88);
     @include flex(flex-start);
-    .img_box{
+    .img_box {
       flex-shrink: 0;
       width: rem(88);
       height: rem(88);
     }
-    .product_info{
+    .product_info {
       align-self: flex-end;
       width: 100%;
-      font-size: rem(14);
-      color: #3F3F3F;
-      .price{
+      font-size: rem(13);
+      color: #3f3f3f;
+      .price {
         font-size: rem(18);
-        color: #FF3B30;
+        color: #ff3b30;
         margin-right: rem(5);
       }
-      .other{
+      .other {
         margin-top: rem(18);
         margin-left: rem(14);
+        font-family: "PingFangSC-Regular";
         color: #333;
       }
     }
-    .close{
+    .close {
       flex-shrink: 0;
-        align-self: flex-start;
-        width: rem(18);
-        height: rem(18);
-      }
+      align-self: flex-start;
+      width: rem(18);
+      height: rem(18);
+    }
   }
 
-
-  .spec_item{
+  .spec_item {
     margin-top: rem(20);
-    .title{
+    .title {
       font-size: rem(14);
+      font-family: "PingFangSC-Regular";
       color: #333333;
     }
-    .infos{
+    .infos {
       @include flex(flex-start);
       flex-wrap: wrap;
-      font-size: rem(14);
-      .item{
+      font-size: rem(12);
+      .item {
         flex-shrink: 0;
         padding: rem(8) 0;
         margin-right: rem(20);
-        .inner{
+        .inner {
           padding: rem(8);
-          border: rem(1) solid #7F7F7F;
+          border: rem(1) solid #7f7f7f;
           border-radius: rem(2);
         }
-        .active{
-          border: rem(1) solid #0088FF;
-          color: #0088FF;
+        .active {
+          border: rem(1) solid #0088ff;
+          color: #0088ff;
         }
       }
     }
-    .count{
+    .count {
       margin-top: rem(8);
     }
   }
