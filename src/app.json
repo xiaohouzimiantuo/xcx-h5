@@ -30,6 +30,10 @@
     "navigationBarTextStyle": "black"
   },
   "usingComponents": {
+<<<<<<< HEAD
+=======
+    "van-button": "static/vant-weapp/button/index",
+>>>>>>> 5eb31341db85e7e77f763aeee07210b3de5279d2
     "van-toast": "static/vant-weapp/toast/index"
   }
 }

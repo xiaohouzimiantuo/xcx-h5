@@ -1,8 +1,14 @@
 "use strict";
 // Template version: 1.3.1
 // see http://vuejs-templates.github.io/webpack for documentation.
+<<<<<<< HEAD
 const path = require("path");
 const myConfig = require("../src/http/config");
+=======
+
+const path = require("path");
+
+>>>>>>> 5eb31341db85e7e77f763aeee07210b3de5279d2
 module.exports = {
   dev: {
     // Paths
@@ -10,10 +16,17 @@ module.exports = {
     assetsPublicPath: "/",
     proxyTable: {
       "/api": {
+<<<<<<< HEAD
         target: myConfig.url,
         changeOrigin: true,
         pathRewrite: {
           "^/api": ""
+=======
+        target: "http://scell.qiyuanlian.top", //测试
+        changeOrigin: true,
+        pathRewrite: {
+          "^/api": "api"
+>>>>>>> 5eb31341db85e7e77f763aeee07210b3de5279d2
         }
       }
       // "/admin": {
