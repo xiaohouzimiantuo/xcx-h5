@@ -58,10 +58,7 @@ export default {
     }
   },
   created() {
-<<<<<<< HEAD
     this._store.get("token") && this._router.replace("/pages/shop/main");
-=======
->>>>>>> 5eb31341db85e7e77f763aeee07210b3de5279d2
   },
   methods: {
     login() {
