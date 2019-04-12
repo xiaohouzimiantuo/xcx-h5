@@ -1,9 +1,9 @@
 module.exports = {
-  url: "https://test.com", //test host
+  url: "http://fish.webmyy.com", //test host
   //   url: "",
   defaultRequestMethod: "POST",
   contentType: "application/x-www-form-urlencoded",
   commonData: {
-    version: "123"
+    version: "100"
   }
 };
